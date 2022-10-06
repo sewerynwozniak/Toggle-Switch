@@ -1,0 +1,46 @@
+$switchWidth:50px;
+$switchCircleWidth:24px;
+$switchCircleMargin:3px;
+$moveValue:calc($switchWidth - $switchCircleWidth - calc($switchCircleMargin*2));
+body{
+    background-color: rgb(0, 0, 0);
+}
+
+.input{
+    position: relative;
+    visibility: hidden;
+    
+    &::before{
+        content: '';
+        position: absolute;
+        width: $switchWidth;
+        height: 30px;
+        background-color: rgb(99, 99, 99);
+        border-radius: 30px;
+        visibility: visible;
+
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 24px;
+        height: 24px;
+        background-color: rgb(255, 255, 255);
+        border-radius: 100%;
+        visibility: visible;
+        margin: $switchCircleMargin;
+        transition: all 0.3s;
+    }
+
+    &:hover{
+        cursor: pointer;
+    }
+    &:checked::before{
+        background-color: rgb(61, 101, 189);  
+    }
+    &:checked::after{
+        transform: translateX($moveValue);   
+    }
+}
